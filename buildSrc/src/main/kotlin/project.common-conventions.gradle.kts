@@ -1,22 +1,13 @@
 plugins {
-    `java-library`
+    `kotlin-dsl`
 }
 
 repositories {
-    mavenLocal()
-    mavenCentral()
+    gradlePluginPortal()
 }
 
 tasks {
-    java {
-        toolchain {
-            languageVersion.set(
-                JavaLanguageVersion.of("${findProperty("java")}")
-            )
-        }
-    }
-
-    compileJava {
-        options.compilerArgs.add("-parameters")
+    compileKotlin {
+        kotlinOptions.jvmTarget = "17"
     }
 }
